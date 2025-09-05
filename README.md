@@ -22,6 +22,7 @@ A custom MCP-like server (FastAPI + JSON-RPC) that lets an LLM act as a research
 - Arxiv API (python `arxiv` lib)
 - PyGitHub for publishing notes to GitHub
 - Optional LLMs: Groq (preferred) and OpenAI for summaries
+- MCP stdio server for Claude Desktop
 
 ## Setup
 
@@ -30,6 +31,7 @@ A custom MCP-like server (FastAPI + JSON-RPC) that lets an LLM act as a research
     ```bash
     python -m venv .venv
     source .venv/Scripts/activate
+    python -m pip install --upgrade pip setuptools wheel
     pip install -e .
     ```
 
@@ -45,17 +47,46 @@ A custom MCP-like server (FastAPI + JSON-RPC) that lets an LLM act as a research
     OPENAI_API_KEY=sk_...
     ```
 
-## Run
+## Run (HTTP JSON-RPC)
 
 ```bash
-python -m mcp_research_assistant.app
-# or installed script
-mcp-research-assistant
+uvicorn mcp_research_assistant.app:app --host 127.0.0.1 --port 8000
 ```
 
-Server listens on <http://localhost:8000>
+## Run (MCP stdio for Claude Desktop)
 
-## JSON-RPC Endpoints
+```bash
+mcp-research-assistant-stdio
+```
+
+Then add this to your Claude Desktop config (e.g., Claude Desktop -> Settings -> Developer -> Edit Config):
+
+```json
+{
+  "mcpServers": {
+    "mcp-research-assistant": {
+      "command": "bash",
+      "args": [
+        "-lc",
+        "source .venv/Scripts/activate && mcp-research-assistant-stdio"
+      ],
+      "env": {
+        "DATA_DIR": "data",
+        "NOTES_DIR": "data/notes",
+        "GROQ_API_KEY": "gsk_...",
+        "OPENAI_API_KEY": "sk_...",
+        "GITHUB_TOKEN": "ghp_...",
+        "GITHUB_REPO": "owner/repo"
+      }
+    }
+  }
+}
+```
+
+- On Windows without bash, set command to `mcp-research-assistant-stdio` and remove args.
+- Ensure your venv is activated or use an absolute path to Python and the entry point.
+
+## JSON-RPC Endpoints (HTTP)
 
 POST to `/json-rpc` with a body like:
 
@@ -82,10 +113,6 @@ POST to `/json-rpc` with a body like:
     ```json
     {"jsonrpc":"2.0","method":"github.publish","params":{"commit_message":"Add notes"},"id":4}
     ```
-
-## MCP Integration
-
-This server exposes tool-like JSON-RPC methods compatible with MCP clients. Point your client/tooling to call POST http(s)://localhost:8000/json-rpc and wire the methods above as tools.
 
 ## Notes
 

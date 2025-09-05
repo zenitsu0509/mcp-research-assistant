@@ -22,6 +22,7 @@ dependencies = [
   "arxiv>=2.1",
   "openai>=1.40; python_version>='3.9'",
   "groq>=0.9",
+  "mcp>=1.1.0",
 ]
 
 [project.optional-dependencies]
@@ -35,3 +36,4 @@ where = ["src"]
 
 [project.scripts]
 mcp-research-assistant = "mcp_research_assistant.app:main"
+mcp-research-assistant-stdio = "mcp_research_assistant.mcp_server:main"
