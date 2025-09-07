@@ -1,0 +1,21 @@
+{
+  "title": "Modular RAG: Transforming RAG Systems into LEGO-like Reconfigurable Frameworks",
+  "authors": [
+    "Yunfan Gao",
+    "Yun Xiong",
+    "Meng Wang",
+    "Haofen Wang"
+  ],
+  "published": "2024-07-26",
+  "arxiv_id": "2407.21059",
+  "arxiv_url": "http://arxiv.org/abs/2407.21059v1",
+  "pdf_url": "http://arxiv.org/pdf/2407.21059v1",
+  "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.IR"
+  ],
+  "primary_category": "cs.CL",
+  "abstract": "Retrieval-augmented Generation (RAG) has markedly enhanced the capabilities of Large Language Models (LLMs) in tackling knowledge-intensive tasks. The increasing demands of application scenarios have driven the evolution of RAG, leading to the integration of advanced retrievers, LLMs and other complementary technologies, which in turn has amplified the intricacy of RAG systems. However, the rapid advancements are outpacing the foundational RAG paradigm, with many methods struggling to be unified under the process of \"retrieve-then-generate\". In this context, this paper examines the limitations of the existing RAG paradigm and introduces the modular RAG framework. By decomposing complex RAG systems into independent modules and specialized operators, it facilitates a highly reconfigurable framework. Modular RAG transcends the traditional linear architecture, embracing a more advanced design that integrates routing, scheduling, and fusion mechanisms. Drawing on extensive research, this paper further identifies prevalent RAG patterns-linear, conditional, branching, and looping-and offers a comprehensive analysis of their respective implementation nuances. Modular RAG presents innovative opportunities for the conceptualization and deployment of RAG systems. Finally, the paper explores the potential emergence of new operators and paradigms, establishing a solid theoretical foundation and a practical roadmap for the continued evolution and practical deployment of RAG technologies.",
+  "saved": "2025-09-06T16:46:18.970870"
+}
