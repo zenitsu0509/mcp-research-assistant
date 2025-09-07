@@ -1,120 +1,209 @@
 # MCP Research Assistant
 
-A custom MCP-like server (FastAPI + JSON-RPC) that lets an LLM act as a research assistant:
-
-- Search Arxiv for papers and fetch metadata/abstracts
-- Summarize papers or arbitrary text
-- Save organized notes locally in Markdown
-- Publish notes to a GitHub repository
+A custom Model Context Protocol (MCP) Server that enables AI assistants to perform comprehensive research tasks. This server provides seamless integration with ArXiv for paper discovery, Groq API for intelligent summarization, local file system for organization, and GitHub for collaboration.
 
 ## Features
 
-- Search Papers – query Arxiv with keywords, fetch abstracts & metadata
-- Summarize Papers – LLM-backed (Groq preferred, OpenAI fallback) or simple fallback
-- Organize Notes – store as Markdown in `data/notes/`
-- Publish Reports – commit & push notes to a GitHub repo via API
-- Conversational Interface – call tools via JSON-RPC; suitable for MCP clients
+### 🔬 Research Capabilities
+- **ArXiv Integration**: Search and fetch research papers from ArXiv
+- **Intelligent Summarization**: Leverage Groq API for high-quality paper summaries
+- **Reference Management**: Organize and track research references
+- **Citation Generation**: Generate proper citations for papers
 
-## Tech Stack
+### 📁 File System Management
+- **Note Organization**: Create and manage research notes
+- **Summary Storage**: Save paper summaries in structured formats
+- **Reference Library**: Build a local library of research materials
+- **Export Options**: Export research data in various formats
 
-- Python 3.9+
-- FastAPI (HTTP server) + simple JSON-RPC handler
-- Arxiv API (python `arxiv` lib)
-- PyGitHub for publishing notes to GitHub
-- Optional LLMs: Groq (preferred) and OpenAI for summaries
-- MCP stdio server for Claude Desktop
+### 🔗 GitHub Integration
+- **Repository Management**: Push research notes and reports to GitHub
+- **Collaboration**: Share research findings with team members
+- **Version Control**: Track changes in research documentation
+- **Automated Commits**: Automatic organization of research materials
 
-## Setup
+### 🚀 MCP Tools
+All capabilities are exposed as MCP tools for seamless AI integration:
+- `search_arxiv`: Search ArXiv for research papers
+- `fetch_paper`: Download and parse paper content
+- `summarize_paper`: Generate AI-powered summaries using Groq
+- `save_notes`: Save research notes locally
+- `create_summary`: Create structured research summaries
+- `organize_references`: Manage reference collections
+- `push_to_github`: Upload research materials to GitHub
+- `search_local_notes`: Find existing research notes
+- `generate_citation`: Create proper citations
+- `export_research`: Export research in various formats
 
-1. Create and activate a virtual environment, then install:
+## Installation
 
-    ```bash
-    python -m venv .venv
-    source .venv/Scripts/activate
-    python -m pip install --upgrade pip setuptools wheel
-    pip install -e .
-    ```
-
-2. Create a `.env` file based on `.env.example`:
-
-    ```properties
-    DATA_DIR=data
-    NOTES_DIR=data/notes
-    GITHUB_TOKEN=ghp_...   # with repo access
-    GITHUB_REPO=owner/repo
-    # Choose either GROQ or OpenAI (Groq preferred)
-    GROQ_API_KEY=gsk_...
-    OPENAI_API_KEY=sk_...
-    ```
-
-## Run (HTTP JSON-RPC)
-
+1. Clone the repository:
 ```bash
-uvicorn mcp_research_assistant.app:app --host 127.0.0.1 --port 8000
+git clone https://github.com/your-username/mcp-research-assistant.git
+cd mcp-research-assistant
 ```
 
-## Run (MCP stdio for Claude Desktop)
-
+2. Install dependencies:
 ```bash
-mcp-research-assistant-stdio
+pip install -e .
 ```
 
-Then add this to your Claude Desktop config (e.g., Claude Desktop -> Settings -> Developer -> Edit Config):
+3. Set up environment variables:
+```bash
+cp .env.example .env
+# Edit .env with your API keys
+```
+
+## Configuration
+
+Create a `.env` file with the following variables:
+
+```env
+# Groq API for summarization
+GROQ_API_KEY=your_groq_api_key_here
+
+# GitHub API for repository integration
+GITHUB_TOKEN=your_github_token_here
+GITHUB_USERNAME=your_github_username
+GITHUB_REPO=your_research_repo_name
+
+# Local paths
+RESEARCH_DIR=./research_data
+NOTES_DIR=./research_data/notes
+SUMMARIES_DIR=./research_data/summaries
+REFERENCES_DIR=./research_data/references
+```
+
+## Usage
+
+### Running the MCP Server
+
+Start the server:
+```bash
+python -m mcp_research_assistant.server
+```
+
+Or use the installed command:
+```bash
+mcp-research-assistant
+```
+
+### MCP Client Configuration
+
+Add to your MCP client configuration:
 
 ```json
 {
   "mcpServers": {
-    "mcp-research-assistant": {
-      "command": "bash",
-      "args": [
-        "-lc",
-        "source .venv/Scripts/activate && mcp-research-assistant-stdio"
-      ],
-      "env": {
-        "DATA_DIR": "data",
-        "NOTES_DIR": "data/notes",
-        "GROQ_API_KEY": "gsk_...",
-        "OPENAI_API_KEY": "sk_...",
-        "GITHUB_TOKEN": "ghp_...",
-        "GITHUB_REPO": "owner/repo"
-      }
+    "research-assistant": {
+      "command": "mcp-research-assistant",
+      "args": []
     }
   }
 }
 ```
 
-- On Windows without bash, set command to `mcp-research-assistant-stdio` and remove args.
-- Ensure your venv is activated or use an absolute path to Python and the entry point.
+### Example Workflows
 
-## JSON-RPC Endpoints (HTTP)
+1. **Research a Topic**:
+   - Search ArXiv for relevant papers
+   - Fetch interesting papers
+   - Generate summaries using Groq
+   - Save organized notes
+   - Push findings to GitHub
 
-POST to `/json-rpc` with a body like:
+2. **Literature Review**:
+   - Search multiple topics
+   - Collect and summarize papers
+   - Organize references by theme
+   - Export comprehensive review
 
-- Search arxiv
+3. **Collaborative Research**:
+   - Share notes via GitHub
+   - Track research progress
+   - Maintain version history
 
-    ```json
-    {"jsonrpc":"2.0","method":"arxiv.search","params":{"query":"LLM agents","max_results":3},"id":1}
-    ```
+## API Reference
 
-- Summarize text (Groq by default; override model if desired)
+### ArXiv Tools
+- `search_arxiv(query, max_results)`: Search ArXiv database
+- `fetch_paper(arxiv_id)`: Download paper content
+- `get_paper_metadata(arxiv_id)`: Get paper information
 
-    ```json
-    {"jsonrpc":"2.0","method":"summarize.text","params":{"text":"...","max_words":120,"model":"llama-3.1-70b-versatile"},"id":2}
-    ```
+### Summarization Tools
+- `summarize_paper(content, style)`: Groq-powered summarization
+- `generate_key_points(content)`: Extract key insights
+- `create_abstract_summary(content)`: Generate abstracts
 
-- Save a note
+### File System Tools
+- `save_notes(title, content, tags)`: Save research notes
+- `search_local_notes(query)`: Find existing notes
+- `organize_files(structure)`: Organize research files
+- `export_research(format, filter)`: Export research data
 
-    ```json
-    {"jsonrpc":"2.0","method":"notes.save","params":{"title":"Paper X","content":"..."},"id":3}
-    ```
+### GitHub Tools
+- `push_to_github(files, commit_message)`: Upload to repository
+- `create_research_branch(name)`: Create feature branch
+- `sync_research_repo()`: Synchronize with remote
 
-- Publish notes to GitHub
+## Development
 
-    ```json
-    {"jsonrpc":"2.0","method":"github.publish","params":{"commit_message":"Add notes"},"id":4}
-    ```
+### Setup Development Environment
 
-## Notes
+```bash
+# Install development dependencies
+pip install -e .[dev]
 
-- If GROQ_API_KEY is set, Groq is used first. If not, OpenAI is used when OPENAI_API_KEY is set. Otherwise a simple truncation fallback is used.
-- GitHub publishing writes files based on paths relative to the current working dir. By default it includes all Markdown notes under `data/notes`.
+# Run tests
+pytest
+
+# Format code
+black .
+isort .
+
+# Type checking
+mypy src/
+```
+
+### Project Structure
+
+```
+mcp-research-assistant/
+├── src/mcp_research_assistant/
+│   ├── __init__.py
+│   ├── server.py              # Main MCP server
+│   ├── arxiv_client.py        # ArXiv API integration
+│   ├── groq_client.py         # Groq API integration
+│   ├── file_manager.py        # Local file system management
+│   ├── github_client.py       # GitHub API integration
+│   ├── research_tools.py      # MCP tool implementations
+│   └── utils.py               # Utility functions
+├── tests/
+├── examples/
+├── README.md
+├── pyproject.toml
+└── .env.example
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests
+5. Submit a pull request
+
+## License
+
+MIT License - see [LICENSE](LICENSE) file for details.
+
+## Support
+
+For issues and questions:
+- Create an issue on GitHub
+- Check the documentation
+- Review example workflows
+
+---
+
+Built with ❤️ for the research community
