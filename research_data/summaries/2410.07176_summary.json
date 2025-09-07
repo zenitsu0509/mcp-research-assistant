@@ -1,0 +1,25 @@
+{
+  "title": "Astute RAG: Overcoming Imperfect Retrieval Augmentation and Knowledge Conflicts for Large Language Models",
+  "authors": [
+    "Fei Wang",
+    "Xingchen Wan",
+    "Ruoxi Sun",
+    "Jiefeng Chen",
+    "Sercan Ö. Arık"
+  ],
+  "published": "2024-10-09",
+  "arxiv_id": "2410.07176",
+  "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LG"
+  ],
+  "main_contribution": "Proposes Astute RAG, a novel approach designed to be resilient to imperfect retrieval augmentation by addressing knowledge conflicts between LLM internal knowledge and external sources. Identifies and solves the critical problem of error propagation from imperfect retrieval.",
+  "methodology": "- Adaptively elicits essential information from LLMs' internal knowledge\n- Iteratively consolidates internal and external knowledge with source-awareness\n- Finalizes answers based on information reliability assessment\n- Uses comprehensive controlled analyses under realistic conditions\n- Tested with Gemini and Claude models",
+  "key_findings": "- Imperfect retrieval augmentation is inevitable, common, and harmful in RAG systems\n- Knowledge conflicts between internal and external knowledge are key bottlenecks\n- Astute RAG achieves performance comparable to or surpassing conventional LLM use in worst-case scenarios\n- Only RAG method to maintain robustness under adverse conditions\n- Superior performance compared to previous robustness-enhanced RAG approaches",
+  "technical_innovation": "First systematic approach to address knowledge conflicts in RAG by combining internal LLM knowledge with external retrieval in a source-aware manner, with reliability-based answer finalization",
+  "practical_impact": "Provides robust RAG solution that maintains performance even with poor-quality retrieval, crucial for real-world deployment where perfect retrieval is impossible",
+  "limitations": "Evaluation limited to specific LLM models (Gemini and Claude), and computational overhead from iterative knowledge consolidation process",
+  "future_directions": "Extension to more LLM architectures, evaluation on broader domains, and optimization of the iterative consolidation process for efficiency",
+  "created": "2025-09-07T10:45:14.327944"
+}
