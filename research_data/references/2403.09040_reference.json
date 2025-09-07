@@ -1,0 +1,22 @@
+{
+  "title": "RAGGED: Towards Informed Design of Scalable and Stable RAG Systems",
+  "authors": [
+    "Jennifer Hsia",
+    "Afreen Shaikh",
+    "Zhiruo Wang",
+    "Graham Neubig"
+  ],
+  "published": "2024-03-14",
+  "updated": "2025-07-16",
+  "arxiv_id": "2403.09040",
+  "arxiv_url": "http://arxiv.org/abs/2403.09040v3",
+  "pdf_url": "http://arxiv.org/pdf/2403.09040v3",
+  "categories": [
+    "cs.CL"
+  ],
+  "primary_category": "cs.CL",
+  "journal_ref": "ICML 2025",
+  "comment": "Project page: https://github.com/neulab/ragged",
+  "abstract": "Retrieval-augmented generation (RAG) enhances language models by integrating external knowledge, but its effectiveness is highly dependent on system configuration. Improper retrieval settings can degrade performance, making RAG less reliable than closed-book generation. In this work, we introduce RAGGED, a framework for systematically evaluating RAG systems across diverse retriever-reader configurations, retrieval depths, and datasets. Our analysis reveals that reader robustness to noise is the key determinant of RAG stability and scalability. Some readers benefit from increased retrieval depth, while others degrade due to their sensitivity to distracting content. Through large-scale experiments on open-domain, multi-hop, and specialized-domain datasets, we show that retrievers, rerankers, and prompts influence performance but do not fundamentally alter these reader-driven trends. By providing a principled framework and new metrics to assess RAG stability and scalability, RAGGED enables systematic evaluation of retrieval-augmented generation systems, guiding future research on optimizing retrieval depth and model robustness.",
+  "saved": "2025-09-06T16:46:26.771963"
+}
