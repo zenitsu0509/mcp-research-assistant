@@ -1,0 +1,23 @@
+{
+  "title": "RAGGED: Towards Informed Design of Scalable and Stable RAG Systems",
+  "authors": [
+    "Jennifer Hsia",
+    "Afreen Shaikh",
+    "Zhiruo Wang",
+    "Graham Neubig"
+  ],
+  "published": "2024-03-14",
+  "arxiv_id": "2403.09040",
+  "categories": [
+    "cs.CL"
+  ],
+  "journal": "ICML 2025",
+  "summary": "**Research Paper Summary: RAGGED - Towards Informed Design of Scalable and Stable RAG Systems**\n\n**Main Research Question or Problem Addressed:**\n\nThe primary research question addressed in this paper is how to design scalable and stable Retrieval-Augmented Generation (RAG) systems, which integrate external knowledge to enhance language models. The authors aim to identify the key factors that influence the effectiveness of RAG systems and provide a framework for systematically evaluating them.\n\n**Key Methodology or Approach Used:**\n\nThe authors introduce RAGGED, a framework for evaluating RAG systems across diverse retriever-reader configurations, retrieval depths, and datasets. The framework involves large-scale experiments on open-domain, multi-hop, and specialized-domain datasets. The authors use a combination of metrics to assess RAG stability and scalability, including reader robustness to noise, retrieval depth, and model performance.\n\n**Major Findings and Results:**\n\nThe analysis reveals that reader robustness to noise is the key determinant of RAG stability and scalability. The authors find that some readers benefit from increased retrieval depth, while others degrade due to their sensitivity to distracting content. The results also show that retrievers, rerankers, and prompts influence performance but do not fundamentally alter these reader-driven trends. Specifically, the authors find that:\n\n* Reader robustness to noise is the primary factor influencing RAG stability and scalability.\n* Increased retrieval depth can improve performance for some readers, but degrade it for others.\n* Retriever, reranker, and prompt configurations influence performance, but do not alter the reader-driven trends.\n\n**Significance and Implications:**\n\nThe RAGGED framework provides a principled approach to evaluating RAG systems, enabling systematic evaluation of retrieval-augmented generation systems. The findings have significant implications for the design of scalable and stable RAG systems, guiding future research on optimizing retrieval depth and model robustness. The authors' results suggest that:\n\n* RAG systems should be designed with reader robustness to noise in mind.\n* Retrieval depth should be optimized for each reader, rather than assuming a one-size-fits-all approach.\n* Future research should focus on developing more robust readers and optimizing retrieval depth.\n\n**Notable Limitations:**\n\nWhile the RAGGED framework provides a comprehensive evaluation of RAG systems, there are some notable limitations:\n\n* The framework is limited to evaluating RAG systems on specific datasets and configurations.\n* The analysis is based on a specific set of metrics, which may not capture all aspects of RAG stability and scalability.\n* The results may not generalize to all RAG systems, as the framework is designed to evaluate a specific class of systems.\n\n**Conclusion:**\n\nThe RAGGED framework provides a significant contribution to the field of RAG systems, enabling systematic evaluation and optimization of these systems. The findings highlight the importance of reader robustness to noise and retrieval depth in designing scalable and stable RAG systems. Future research should focus on developing more robust readers and optimizing retrieval depth to improve the performance and stability of RAG systems.",
+  "key_contributions": [
+    "RAGGED evaluation framework",
+    "Reader robustness as key determinant of RAG stability",
+    "Analysis of retrieval depth impact on different readers",
+    "Systematic evaluation methodology for RAG systems"
+  ],
+  "created": "2025-09-06T16:44:25.893822"
+}
