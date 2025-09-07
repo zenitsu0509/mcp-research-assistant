@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "research-assistant": {
+      "command": "C:/Python313/python.exe",
+      "args": ["-m", "mcp_research_assistant.server"],
+      "cwd": "E:/mcp_server/ai-assistant/mcp-research-assistant",
+      "env": {
+        "PYTHONPATH": "src",
+        "GROQ_API_KEY": "GROQ_API_KEY",
+        "GITHUB_TOKEN": "GITHUB_TOKEN",
+        "GITHUB_USERNAME": "zenitsu0509",
+        "GITHUB_REPO": "mcp-research-assistant",
+        "PYTHONIOENCODING": "utf-8"
+      }
+    }
+  }
+}

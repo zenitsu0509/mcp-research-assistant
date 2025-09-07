@@ -4,11 +4,13 @@ __pycache__/
 *.pyo
 *.pyd
 *.egg-info/
-.dist/
-.build/
+dist/
+build/
 .venv/
 venv/
+env/
 .env
+.env.local
 
 # VS Code
 .vscode/
@@ -17,8 +19,26 @@ venv/
 .DS_Store
 Thumbs.db
 
-# Data
-/data/
+# Research data (local)
+/research_data/
+
+# Exported data
+research_backup*
+research_export_*
 
 # Logs
 *.log
+logs/
+
+# Test artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+
+# MCP client configs (contain sensitive info)
+claude_config.json
+*_config.json
+
+# Temporary files
+*.tmp
+*.temp
