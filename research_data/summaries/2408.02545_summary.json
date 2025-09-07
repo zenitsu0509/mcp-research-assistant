@@ -1,0 +1,26 @@
+{
+  "title": "RAG Foundry: A Framework for Enhancing LLMs for Retrieval Augmented Generation",
+  "authors": [
+    "Daniel Fleischer",
+    "Moshe Berchansky",
+    "Moshe Wasserblat",
+    "Peter Izsak"
+  ],
+  "published": "2024-08-05",
+  "arxiv_id": "2408.02545",
+  "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.IR",
+    "cs.LG"
+  ],
+  "main_contribution": "Introduces RAG Foundry, an open-source framework that integrates data creation, training, inference, and evaluation into a unified workflow for RAG systems. Addresses the inherent complexity of implementing and evaluating RAG systems through systematic framework design.",
+  "methodology": "- Integrates data creation, training, inference and evaluation in single workflow\n- Enables rapid prototyping and experimentation with various RAG techniques\n- Facilitates creation of data-augmented datasets for training and evaluation\n- Supports internal or specialized knowledge sources\n- Demonstrates effectiveness through Llama-3 and Phi-3 augmentation",
+  "key_findings": "- Consistent improvements across three knowledge-intensive datasets\n- Successful augmentation and fine-tuning of Llama-3 and Phi-3 models\n- Framework enables rapid prototyping and experimentation\n- Multi-faceted evaluation approach assessing both retrieval accuracy and generative quality\n- Open-source availability promotes reproducibility and adoption",
+  "technical_innovation": "First comprehensive framework unifying all RAG development stages (data creation, training, inference, evaluation) with support for diverse RAG configurations and model architectures",
+  "practical_impact": "Significantly reduces barriers to RAG implementation and evaluation, enabling practitioners to quickly develop and test RAG solutions with specialized knowledge sources",
+  "limitations": "Framework evaluation limited to specific models (Llama-3, Phi-3) and datasets, potential learning curve for complex configurations",
+  "future_directions": "Extension to additional LLM architectures, integration of more advanced RAG techniques, and development of domain-specific optimization modules",
+  "github_url": "https://github.com/IntelLabs/RAGFoundry",
+  "created": "2025-09-07T10:45:28.669267"
+}
