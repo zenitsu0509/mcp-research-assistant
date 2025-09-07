@@ -1,0 +1,23 @@
+{
+  "title": "KG-Infused RAG: Augmenting Corpus-Based RAG with External Knowledge Graphs",
+  "authors": [
+    "Dingjun Wu",
+    "Yukun Yan",
+    "Zhenghao Liu",
+    "Zhiyuan Liu",
+    "Maosong Sun"
+  ],
+  "published": "2025-06-11",
+  "arxiv_id": "2506.09542",
+  "categories": [
+    "cs.CL"
+  ],
+  "main_contribution": "Introduces KG-Infused RAG, a framework that integrates knowledge graphs into RAG systems using spreading activation - a cognitive process for concept association and inference. Addresses the limitation of existing RAG methods that rely on single sources (either unstructured text or structured knowledge).",
+  "methodology": "- Implements spreading activation mechanism for knowledge graph traversal\n- Retrieves KG facts and expands queries accordingly\n- Combines corpus passages with structured facts for multi-source retrieval\n- Uses preference learning on key pipeline stages for optimization\n- Functions as plug-and-play enhancement module for existing RAG systems",
+  "key_findings": "- Consistently outperforms vanilla RAG by 3.8% to 13.8% across five QA benchmarks\n- Demonstrates effectiveness when integrated with Self-RAG, showing versatility\n- Enables interpretable, multi-source retrieval grounded in semantic structure\n- Provides cognitively-inspired knowledge activation mechanisms",
+  "technical_innovation": "First framework to integrate knowledge graphs with corpus-based RAG using spreading activation, enabling semantic reasoning and concept association during retrieval",
+  "practical_impact": "Offers significant performance improvements while maintaining compatibility with existing RAG architectures, making it easily adoptable for real-world applications",
+  "limitations": "Requires access to domain-relevant knowledge graphs and may need additional computational resources for graph traversal operations",
+  "future_directions": "Potential for exploring different KG structures, scaling to larger graphs, and application to multi-modal RAG scenarios",
+  "created": "2025-09-07T10:44:59.563673"
+}
