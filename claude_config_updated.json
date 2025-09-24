@@ -1,9 +1,9 @@
 {
   "mcpServers": {
     "research-assistant": {
-      "command": "C:/Python313/python.exe",
+      "command": "Python313/python.exe",
       "args": ["-m", "mcp_research_assistant.server"],
-      "cwd": "E:/mcp_server/ai-assistant/mcp-research-assistant",
+      "cwd": "mcp_server/ai-assistant/mcp-research-assistant",
       "env": {
         "PYTHONPATH": "src",
         "GROQ_API_KEY": "GROQ_API_KEY",
